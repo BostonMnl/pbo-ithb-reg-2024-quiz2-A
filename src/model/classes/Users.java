@@ -77,4 +77,30 @@ public class Users {
         }
     }
 
+    public static Users getData(String emails, String pass) {
+        Users user = null;
+        String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+
+        try (Connection con = ConnectionManager.getConnection();
+                PreparedStatement st = con.prepareStatement(query)) {
+
+            st.setString(1, emails);
+            st.setString(2, pass);
+
+            try (ResultSet rs = st.executeQuery()) {
+                if (rs.next()) {
+                    user = new Users();
+                    user.setId(rs.getInt("id"));
+                    user.setName(rs.getString("name"));
+                    user.setEmail(rs.getString("email"));
+                    user.setPassword(null);
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Terjadi kesalahan saat mengambil data: " + ex.getMessage());
+        }
+
+        return user;
+    }
+
 }

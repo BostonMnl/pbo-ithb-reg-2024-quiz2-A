@@ -9,13 +9,19 @@ import javax.swing.*;
 
 import controller.BookListControllers;
 import model.classes.Books;
+import model.classes.Users;
 
 public class BookListView extends JFrame{
     JFrame frame;
     JButton transactions;
 
-    private void viewBookList(){
-        frame = new JFrame("Login");
+    
+    public BookListView(Users user){
+        viewBookList(user);
+    }
+
+    private void viewBookList(Users user){
+        frame = new JFrame("Book Menu");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -65,9 +71,6 @@ public class BookListView extends JFrame{
 
         frame.add(mainPanel);
         frame.setVisible(true);
-    }
-    public BookListView(){
-        viewBookList();
     }
     
 }   

@@ -3,12 +3,9 @@ package view;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
-import controller.BookListControllers;
-import model.classes.Books;
 
 public class TransactionsView extends JFrame{
     JFrame frame;
@@ -19,8 +16,7 @@ public class TransactionsView extends JFrame{
     }
 
     private void viewTransactions(){
-        
-        frame = new JFrame("Login");
+        frame = new JFrame("Transaction Menu");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -42,44 +38,6 @@ public class TransactionsView extends JFrame{
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(null);
         mainPanel.setBounds(0, 0, frameWidth, frameHeight);
-
-        transactions = new JButton("Transactions");
-        transactions.setBounds((frameWidth/2)-50, 25, 100, 25);
-        mainPanel.add(transactions);
-
-        ArrayList<Books> books = BookListControllers.getBuku();
-
-        for (Books buku : books) {
-            JTextField titleTxt = new JTextField(buku.getTitle());
-            JTextField authorTxt = new JTextField(buku.getAuthor());
-            JTextField genreTxt = new JTextField(buku.getGenre());
-            JTextField priceTxt = new JTextField(buku.getPrice());
-            mainPanel.add(titleTxt);
-            mainPanel.add(authorTxt);
-            mainPanel.add(genreTxt);
-            mainPanel.add(priceTxt);
-        }
-
-        // transactions.addActionListener(new ActionListener() {
-        //     @Override
-        //     public void actionPerformed(ActionEvent e) {
-        //         String email = emailField.getText();
-        //         String password = passwordField.toString();
-        //         int hasilLogin = Users.login(email, password);
-
-        //         switch (hasilLogin) {
-        //             case 0:
-        //                 JOptionPane.showMessageDialog(mainPanel, "Login Gagal");
-        //                 frame.dispose();
-        //                 break;
-        //             case 1:
-
-        //                 break;
-        //             default:
-        //                 break;
-        //         }
-        //     }
-        // });
 
         frame.add(mainPanel);
         frame.setVisible(true);

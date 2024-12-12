@@ -67,6 +67,7 @@ public class LoginView extends JFrame {
                 String password = new String(passwordField.getPassword());
                 System.out.println(password);
                 int hasilLogin = Users.login(email, password);
+                Users user = Users.getData(email, password);
 
                 switch (hasilLogin) {
                     case 0:
@@ -74,7 +75,7 @@ public class LoginView extends JFrame {
                         frame.dispose();
                         break;
                     case 1:
-                        new BookListView();
+                        new BookListView(user);
                         frame.dispose();
                         break;
                     default:
